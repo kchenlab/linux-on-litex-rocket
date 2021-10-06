@@ -23,7 +23,7 @@ RUN wget https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setu
     python3 ./litex_setup.py init install --user && \
     wget http://www.contrib.andrew.cmu.edu/~somlo/BTCP/RISCV-20201216git7553f35.tar.xz && \
     tar xvf RISCV-20201216git7553f35.tar.xz && \
-    echo 'export PATH=$PATH:$HOME/RISCV/bin' >> ~/.bashrc && \
+    echo 'export PATH=$PATH:/work/RISCV/bin' >> ~/.bashrc && \
     echo 'ls of current workdir:' && \ 
     ls && \
     echo 'all done'
