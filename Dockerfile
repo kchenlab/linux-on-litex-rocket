@@ -4,7 +4,8 @@ RUN apt-get update && \
     DEBIAN_FRONTEND="noninteractive" apt-get install --yes \
             openocd dtc fakeroot perl-bignum json-c-devel verilator \
             python3-devel python3-setuptools libevent-devel \
-            libmpc-devel mpfr-devel && \
+            libmpc-devel mpfr-devel \
+            yosys trellis nextpnr && \
      rm -rf /var/lib/apt/lists/*
 
 WORKDIR /
