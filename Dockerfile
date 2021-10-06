@@ -32,5 +32,7 @@ RUN wget https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setu
     ls && \
     echo 'all done'
 
+ENV PATH=$PATH:/work/RISCV/bin
+
 RUN litex-boards/litex_boards/targets/lattice_versa_ecp5.py --build \
     --cpu-type rocket --cpu-variant linuxd --sys-clk-freq 50e6
