@@ -3,7 +3,7 @@ FROM ubuntu:20.04 as builder
 # Install deb dependencies.
 RUN apt-get update && \
     DEBIAN_FRONTEND="noninteractive" apt-get install --yes \
-    git cmake build-essential wget \
+    git cmake build-essential wget meson \
     openocd device-tree-compiler fakeroot libjsoncpp-dev verilator \
     python3-dev python3-setuptools libevent-dev \
     libboost-filesystem-dev libboost-program-options-dev \
