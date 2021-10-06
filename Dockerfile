@@ -24,4 +24,6 @@ RUN wget https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setu
     wget http://www.contrib.andrew.cmu.edu/~somlo/BTCP/RISCV-20201216git7553f35.tar.xz && \
     tar xvf RISCV-20201216git7553f35.tar.xz && \
     echo 'export PATH=$PATH:$HOME/RISCV/bin' >> ~/.bashrc && \
-    ls
+    echo 'ls of current workdir:' && \ 
+    ls && \
+    echo 'all done'
