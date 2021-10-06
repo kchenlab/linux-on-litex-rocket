@@ -1,5 +1,6 @@
 FROM ubuntu:20.04 as builder
 
+# Install deb dependencies.
 RUN apt-get update && \
     DEBIAN_FRONTEND="noninteractive" apt-get install --yes \
     git cmake build-essential wget \
@@ -13,6 +14,9 @@ RUN apt-get update && \
 
 WORKDIR /work
 
+# Install Project Trellis
+# Project Trellis enables a fully open-source flow for ECP5 FPGAs using Yosys for Verilog synthesis and nextpnr for place and route. 
+# https://github.com/YosysHQ/prjtrellis
 RUN git clone --recursive https://github.com/YosysHQ/prjtrellis && \
     cd prjtrellis/libtrellis && \
     cmake -DCMAKE_INSTALL_PREFIX=/usr/local . && \
@@ -27,3 +31,6 @@ RUN wget https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setu
     echo 'ls of current workdir:' && \ 
     ls && \
     echo 'all done'
+
+RUN litex-boards/litex_boards/targets/lattice_versa_ecp5.py --build \
+    --cpu-type rocket --cpu-variant linuxd --sys-clk-freq 50e6
