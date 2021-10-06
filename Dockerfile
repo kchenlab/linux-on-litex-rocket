@@ -12,7 +12,7 @@ RUN apt-get update && \
 WORKDIR /work
 
 RUN git clone --recursive https://github.com/YosysHQ/prjtrellis && \
-    cd libtrellis && \
+    cd prjtrellis && \
     cmake -DCMAKE_INSTALL_PREFIX=/usr/local . && \
     make && \
     make install
