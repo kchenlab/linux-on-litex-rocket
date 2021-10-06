@@ -2,17 +2,19 @@ FROM ubuntu:20.04 as builder
 
 RUN apt-get update && \
     DEBIAN_FRONTEND="noninteractive" apt-get install --yes \
-            git cmake build-essential \
-            openocd device-tree-compiler fakeroot libjsoncpp-dev verilator \
-            python3-dev python3-setuptools libevent-dev \
-            libmpc-dev libmpfr-dev \
-            yosys && \
-     rm -rf /var/lib/apt/lists/*
+    git cmake build-essential \
+    openocd device-tree-compiler fakeroot libjsoncpp-dev verilator \
+    python3-dev python3-setuptools libevent-dev \
+    libboost-filesystem-dev libboost-program-options-dev \
+    libboost-system-dev libboost-thread-dev \
+    libmpc-dev libmpfr-dev \
+    yosys && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /work
 
 RUN git clone --recursive https://github.com/YosysHQ/prjtrellis && \
-    cd prjtrellis && \
+    cd prjtrellis/libtrellis && \
     cmake -DCMAKE_INSTALL_PREFIX=/usr/local . && \
     make && \
     make install
