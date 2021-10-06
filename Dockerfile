@@ -2,6 +2,7 @@ FROM ubuntu:20.04 as builder
 
 RUN apt-get update && \
     DEBIAN_FRONTEND="noninteractive" apt-get install --yes \
+            git \
             openocd device-tree-compiler fakeroot libjsoncpp-dev verilator \
             python3-dev python3-setuptools libevent-dev \
             libmpc-dev libmpfr-dev \
