@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 as builder
+FROM zchn/riscv-gnu-toolchain:e31144ee97c19d57e2ac6dad8cec8a8843bc87f5 as builder
 
 # Install deb dependencies.
 RUN apt-get update && \
@@ -25,14 +25,9 @@ RUN git clone --recursive https://github.com/YosysHQ/prjtrellis && \
 
 RUN wget https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setup.py && \
     python3 ./litex_setup.py init install --user && \
-    wget http://www.contrib.andrew.cmu.edu/~somlo/BTCP/RISCV-20201216git7553f35.tar.xz && \
-    tar xvf RISCV-20201216git7553f35.tar.xz && \
-    echo 'export PATH=$PATH:/work/RISCV/bin' >> ~/.bashrc && \
     echo 'ls of current workdir:' && \ 
     ls && \
     echo 'all done'
-
-ENV PATH=$PATH:/work/RISCV/bin
 
 RUN litex-boards/litex_boards/targets/lattice_versa_ecp5.py --build \
     --cpu-type rocket --cpu-variant linuxd --sys-clk-freq 50e6
