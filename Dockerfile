@@ -1,4 +1,4 @@
-FROM zchn/riscv-gnu-toolchain:e31144ee97c19d57e2ac6dad8cec8a8843bc87f5 as builder
+FROM zchn/riscv-gnu-toolchain:7f81fe7ab9ddb61bd06de5ba85ea6fb4ebc1b7f1 as builder
 
 # Install deb dependencies.
 RUN apt-get update && \
