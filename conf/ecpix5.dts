@@ -6,7 +6,7 @@
 	compatible = "freechips,rocketchip-unknown-dev";
 	model = "freechips,rocketchip-unknown";
 	chosen {
-		bootargs = "earlycon=sbi console=liteuart swiotlb=noforce";
+		bootargs = "console=liteuart earlycon=liteuart,0x12006800 swiotlb=noforce";
 	};
 	L13: cpus {
 		#address-cells = <1>;
@@ -45,7 +45,7 @@
 	};
 	L8: memory@80000000 {
 		device_type = "memory";
-		reg = <0x80000000 0x20000000>; /* 512MB (ecpix5) */
+		reg = <0x80000000 0x20000000>; /* 512MB (ecpix5, nexys_video) */
 	};
 	L12: soc {
 		#address-cells = <1>;
